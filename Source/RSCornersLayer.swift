@@ -13,13 +13,7 @@ open class RSCornersLayer: CALayer {
     @objc open var strokeColor = UIColor.green.cgColor
     @objc open var strokeWidth: CGFloat = 2
     @objc open var drawingCornersArray: Array<Array<CGPoint>> = []
-    @objc open var cornersArray: Array<[Any]> = [] {
-        willSet {
-            DispatchQueue.main.async(execute: {
-                self.setNeedsDisplay()
-            })
-        }
-    }
+    @objc open var cornersArray: Array<[Any]> = []
     
     override open func draw(in ctx: CGContext) {
         guard let cornerPointsArray = cornersArray as? [[CGPoint]] else { return }

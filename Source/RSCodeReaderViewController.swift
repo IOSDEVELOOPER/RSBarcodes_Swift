@@ -257,7 +257,11 @@ open class RSCodeReaderViewController: UIViewController, AVCaptureMetadataOutput
       if let ticker = self.ticker {
          ticker.invalidate()
       }
-      self.cornersLayer.cornersArray = []
+       DispatchQueue.main.async { [weak self] in
+           guard let self else { return }
+           self.cornersLayer.setNeedsDisplay()
+           self.cornersLayer.cornersArray = []
+       }
    }
 	
    @objc func onTap(_ gesture: UITapGestureRecognizer) {
@@ -408,7 +412,11 @@ open class RSCodeReaderViewController: UIViewController, AVCaptureMetadataOutput
          }
       }
 		
-      self.cornersLayer.cornersArray = cornersArray
+       DispatchQueue.main.async { [weak self] in
+           guard let self else { return }
+           self.cornersLayer.setNeedsDisplay()
+           self.cornersLayer.cornersArray = cornersArray
+       }
 		
       if barcodeObjects.count > 0 {
          if let barcodesHandler = self.barcodesHandler {
