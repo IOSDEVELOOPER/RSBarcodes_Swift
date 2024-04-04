@@ -259,8 +259,8 @@ open class RSCodeReaderViewController: UIViewController, AVCaptureMetadataOutput
       }
        DispatchQueue.main.async { [weak self] in
            guard let self else { return }
-           self.cornersLayer.setNeedsDisplay()
            self.cornersLayer.cornersArray = []
+           self.cornersLayer.setNeedsDisplay()
        }
    }
 	
@@ -414,8 +414,8 @@ open class RSCodeReaderViewController: UIViewController, AVCaptureMetadataOutput
 		
        DispatchQueue.main.async { [weak self] in
            guard let self else { return }
-           self.cornersLayer.setNeedsDisplay()
            self.cornersLayer.cornersArray = cornersArray
+           self.cornersLayer.setNeedsDisplay()
        }
 		
       if barcodeObjects.count > 0 {
